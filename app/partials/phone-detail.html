@@ -1,0 +1,49 @@
+<!-- TBD: detail view for {{phoneId}} -->
+
+<!-- <img ng-src="{{phone.images[0]}}" class="phone ng-scope"> -->
+<img ng-src="{{mainImageUrl}}" class="phone ng-scope">
+<span class="ng-scope">
+	
+</span> 
+<h1 class="ng-scope ng-binding">{{phone.name}}</h1>
+<span class="ng-scope">
+</span> 
+<p class="ng-scope ng-binding">{{phone.description}}</p>
+<span class="ng-scope">	
+</span>
+<ul class="phone-thumbs ng-scope">
+  <li ng-repeat="img in phone.images" class="ng-scope">
+    <img ng-src="{{img}}" ng-click="setImage(img)">
+  </li>
+</ul>
+ 
+<ul class="specs ng-scope">
+  <li>
+    <span>Availability and Networks</span>
+    <dl>
+      <dt>Availability</dt>
+      <dd ng-repeat="availability in phone.availability">{{availability}}</dd>
+    </dl>
+  </li>
+  <li>
+  	 <span>Battery</span>
+    <dl>
+      <dt>Type</dt>
+      <dd class="ng-binding">{{phone.battery.type}}</dd>
+      <dt>Talk Time</dt>
+      <dd class="ng-binding" >{{phone.battery.talkTime}}</dd>
+      <dt>Standby time (max)</dt>
+      <dd class="ng-binding" >{{phone.battery.standbyTime}}</dd>
+    </dl>
+  </li>
+  <li>
+    <span>Additional Features</span>
+    <dd>{{phone.additionalFeatures}}</dd>
+    <dt>Infrared</dt>
+    <dd>{{phone.connectivity.infrared | checkmark}}</dd>
+    <dt>GPS</dt>
+    <dd>{{phone.connectivity.gps | checkmark}}</dd>
+  </li>
+</ul>
+<span class="ng-scope">
+</span>

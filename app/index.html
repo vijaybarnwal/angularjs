@@ -1,16 +1,20 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="phonecat">
 <head>
   <meta charset="utf-8">
-  <title>My HTML File</title>
+  
   <link rel="stylesheet" href="css/app.css">
-  <!-- <script src="js/app.js"></script> -->
-  <script src="js/controllers.js"></script>
-  <link rel="stylesheet" href="css/bootstrap.css">
   <script src="lib/angular/angular.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/services.js"></script>
+  <script src="lib/angular/angular-resource.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  
 </head>
 <body ng-controller="PhoneListCtrl">
-	
+	<title>Google Phone Gallery: {{query}}</title>
   <!-- <p>Nothing here {{'yet' + '!'}}</p>
 	<p>1 + 2 = {{ 1 + 2 }}</p> 
 	<ul>
@@ -40,32 +44,33 @@
     <tr><th>row number</th></tr>
     <tr ng-repeat="i in [0, 1, 2, 3, 4, 5, 6, 7]"><td>{{i+1}}</td></tr>
   </table> -->
-  <div class="container-fluid">
+ <!--	<div class="container-fluid">
 			<div class="row-fluid">
 				<div class="span2">
-					<!--Sidebar content-->
-					Search:<input ng-model="query">
+					Search:
+					<input ng-model="query">
 					Sort by:
 					<select ng-model="orderProp">
-					  <option value="name">Alphabetical</option>
-					  <option value="age">Newest</option>
+						<option value="name">Alphabetical</option>
+						<option value="age">Newest</option>
 					</select>
 				</div>
 				<div class="span10">
-					<!--Body content-->
+					<p>
+						{{hello}}
+					</p>
 					<ul class="phones">
-						<li ng-repeat="phone in phones | filter:query | orderBy:orderProp" class="thumbnail">
+						<li ng-repeat="phone in phones | filter:query | orderBy:orderProp" class="thumbnail ng-scope">
 							<a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}"></a>
-            	<a href="#/phones/{{phone.id}}">{{phone.name}}</a>
+							<a href="#/phones/{{phone.id}}">{{phone.name}}</a>
 							<p>
 								{{phone.snippet}}
 							</p>
 						</li>
 					</ul>
-					<p>{{hello}}</p>
 				</div>
 			</div>
-		</div>
-		 <title>Google Phone Gallery: {{query}}</title>
+	</div>-->
+		 <div ng-view></div>
 </body>
 </html>
