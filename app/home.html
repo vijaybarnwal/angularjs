@@ -1,0 +1,46 @@
+<!doctype html>
+<html ng-app="drag">
+  <head>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="js/script.js"></script>
+  </head>
+  <body>
+  	<!-- <p ng-init=" name='Barnwal' ">Vijay {{name}}</p>
+    <span  draggable>Drag Me Anywhere on Screen</span> -->
+    <div ng-controller="ClockCtrl" style="float:right;" draggable>
+      Current time is: {{ time.now }}
+    </div>
+    
+    <input ng-model= "t" >
+    <p style="margin-left: 165px; margin-top: -22px;">Hello {{t}}!</p>
+    
+    <!-- <div ng-controller='GreetCtrl' class="ng-scope ng-binding">
+    	Hello {{name}}!
+    	<button ng-click='action()'>
+    		OK
+    	</button>
+    </div> -->
+    
+    <div ng-controller="ListGreetCtrl" class='ng-scope ng-binding'>
+    	<ol>
+    		<li ng-repeat="name in names">{{name}}</li>
+    	</ol>
+    </div>
+    <div ng-init="list = ['Abhishek', 'satya', 'vijay', 'vipul'] ">
+      <!-- <input ng-model="list" ng-list> <br>
+      <input ng-model="list" ng-list> <br>
+      
+      <pre>list={{list}}</pre> <br>
+      <ol>
+        <li ng-repeat="item in list">
+          {{item}}
+        </li>
+      </ol> -->
+      <!--number formatting and array filtering-->
+      Number formatting: {{ 1234567890 | number }} <br>
+      array filtering: <input ng-model="predicate">
+      {{ list | filter:predicate | json }}
+    </div>
+    
+  </body>
+</html>
