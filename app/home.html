@@ -3,16 +3,18 @@
   <head>
     <script src="lib/angular/angular.min.js"></script>
     <script src="js/script.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
   </head>
-  <body>
+  <body >
   	<!-- <p ng-init=" name='Barnwal' ">Vijay {{name}}</p>
     <span  draggable>Drag Me Anywhere on Screen</span> -->
     <div ng-controller="ClockCtrl" style="float:right;" draggable>
+    	<h4> draggable time : </h4>
       Current time is: {{ time.now }}
     </div>
     
-    <input ng-model= "t" >
-    <p style="margin-left: 165px; margin-top: -22px;">Hello {{t}}!</p>
+    <!-- <input ng-model= "t" >
+    <p style="margin-left: 165px; margin-top: -22px;">Hello {{t}}!</p> -->
     
     <!-- <div ng-controller='GreetCtrl' class="ng-scope ng-binding">
     	Hello {{name}}!
@@ -21,12 +23,12 @@
     	</button>
     </div> -->
     
-    <div ng-controller="ListGreetCtrl" class='ng-scope ng-binding'>
+    <!-- <div ng-controller="ListGreetCtrl" class='ng-scope ng-binding'>
     	<ol>
     		<li ng-repeat="name in names">{{name}}</li>
     	</ol>
     </div>
-    <div ng-init="list = ['Abhishek', 'satya', 'vijay', 'vipul'] ">
+    <div ng-init="list = ['Abhishek', 'satya', 'vijay', 'vipul'] "> -->
       <!-- <input ng-model="list" ng-list> <br>
       <input ng-model="list" ng-list> <br>
       
@@ -37,10 +39,23 @@
         </li>
       </ol> -->
       <!--number formatting and array filtering-->
-      Number formatting: {{ 1234567890 | number }} <br>
+      <!-- Number formatting: {{ 1234567890 | number }} <br>
       array filtering: <input ng-model="predicate">
       {{ list | filter:predicate | json }}
-    </div>
-    
+    </div> -->
+    <div style='margin:50px 0 0 20px;'>
+    	<h3>Timestamp(in secs) to Time Format : </h3>
+	    <div ng-controller="MainCtrl" >
+	        <input ng-model="inputDate" value='1345678300'/> <button ng-click="convertDate()">Click to Convert</button>
+	        {{outputDate}} {{inputDate*1000 | date:'medium'}}
+	    </div> <br>
+	  	<h3>Reversing the input Text with Uppercase : </h3>
+			<div ng-controller='reverseText'>
+				<input ng-model='text' type='text' /><br />
+				No. Filter : {{text}}<br />
+				Reverse : {{text | reverse}} <br />
+				Uppercase Reverse : {{text | reverse:true}}<br />
+			</div>
+		</div>
   </body>
 </html>
