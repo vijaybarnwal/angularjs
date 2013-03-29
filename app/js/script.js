@@ -165,22 +165,37 @@ console.log('time diff yrs: ' + yrs_diff);*/
 	}
 	
 	function Ctrl($scope) {
-	  // $scope.user = {name: 'Vijay', last: 'Barnwal'};
-	  
-	  $scope.master = {};
+	  // $scope.options = ['English', 'Hindi', 'French', 'Urdu', 'Japanese', 'Other'];
+	  $scope.output = {};
+	  document.getElementById("other-lang").style.display='none';
 	  $scope.save = function(user) {
-	  	$scope.master = angular.copy(user);
 	  	
+	  	$scope.output = angular.copy(user);
+	  	$scope.user = "";
 	  };
 	  $scope.reset = function() {
-	  	$scope.user = angular.copy($scope.master);
+	  	if($scope.output == ""){
+	  		$scope.user = angular.copy($scope.output);
+	  	}else {
+	  		$scope.user = "";
+	  		// $scope.output = "";
+	  	}
+	  	
 	  	// if($scope.user.email === undefined) {
       	// $scope.user.email = '';   
       // }
 	  };
-	  // $scope.isUnchanged = function(user) {
-	  	// return angular.equals(user, $scope.master);
-	  // };
+	  $scope.other = function () {
+			if ($scope.user.lan.indexOf('other') != -1) {
+				document.getElementById("other-lang").style.display='block';
+				 //.innerHTML = '<input type="text" name="user.other" ng-model="user.other"/>';
+			} else {
+				document.getElementById("other-lang").style.display='none';
+				 $scope.user.other = '';
+			}
+	  	console.log($scope.user.lan);
+	  	// $('.other').show();
+	  }
 	  $scope.reset();
 	  $scope.qty = 1;
 	  $scope.cost = 19.95;

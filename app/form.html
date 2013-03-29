@@ -4,6 +4,7 @@
     <script src="lib/angular/angular.min.js"></script>
     <script src="js/script.js"></script>
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
   </head>
   <body >
@@ -19,38 +20,67 @@
      <!-- <p>1 + 2 = {{ 1 + 2 }}</p> --> 
      <div ng-controller='Ctrl' style="background-color:#BFBFBF;">
      	<h3>Test Form:</h3>
-     	<form name="myForm" class='css-form'>
-				UserName:
+     	<form name="myForm" class='css-form' novalidate>
+				UserName *:
 				<input type='text' name="userName" ng-model="user.userName" required />
 				<!-- <span class="error" ng-show="myForm.userName.$error.required"> Required!</span>
 				<br> -->
 				<br>
-				First Name:
+				First Name *:
 				<input type="text" name="firstName" ng-model="user.firstName" required />
 				<!-- <span class="error" ng-show="myForm.firstName.$error.required"> Required!</span>
 				<br> -->
 				<br>
-				Last Name:
+				Last Name :
 				<input type='text' name='lastName' ng-model='user.lastName'/>
 				<br>
 				E-mail:
 				<input type='email' name='Email' ng-model='user.Email' required style="margin-left:28px;"/>
 				<br>
-				Gender:
+				Gender *:
 				<input type='radio' ng-model='user.gender'  value='male' ng-checked='true'/> Male
 				<input type='radio' ng-model='user.gender' value='female' />Female
 				<br>
+				<!-- Check me for multiple selection of skill: <input type="checkbox" ng-model="user.checked"><br/> -->
+				Skill *:
+				<select ng-model='user.skill' value='' multiple="multiple" style="margin-left:40px;" required>
+					
+					<option>C</option>
+					<option>C++</option>
+					<option>HTML</option>
+					<option>PHP</option>
+					<option>jquery</option>
+					<option>Javascript</option>
+					<option>Java</option>
+					
+				</select><br>
+				Languages Known *:
+				<select ng-model='user.lan' value='' multiple="multiple" style="margin-left:40px;" required   ng-click='other()'>
+					
+					<option value="english">English</option>
+					<option value="hindi">Hindi</option>
+					<option value="french">French</option>
+					<option value="urdu">Urdu</option>
+					<option value="japanese">Japanese</option>
+					<option value="other">Other</option>
+
+				</select>
+				<br>
+				<div id="other-lang">
+						<input type='text' name='other' ng-model='user.other'/>					
+				</div>
+
 				About:
 				<br>
 				<textarea rows="10" cols="30" ng-model = 'user.text' style='margin-left:75px;'></textarea>
 				<br>
 				<div class='btn-set' style="margin-left: 100px;">
-					<button ng-click='reset()' ng-disabled='isUnchanged(user)'>RESET</button>
-					<button ng-click='save(user)' ng-disabled='form.$invalid || isUnchanged(user)'>Save</button>
+					<button ng-click='reset()' ng-disabled='myForm.$invalid'>RESET</button>
+					<button ng-click='save(user)' ng-disabled='myForm.$invalid'>Save</button>
 				</div>
 			</form>
 			<pre>form = {{user | json}}</pre>
-      <pre>master = {{master | json}}</pre>
+      <pre>output = {{output | json}}</pre>
 			<b>Invoice:</b>
       <br>
       <br>
